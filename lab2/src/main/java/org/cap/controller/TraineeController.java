@@ -84,6 +84,10 @@ public class TraineeController {
 	    }
 	    @GetMapping("/processdelete")
 	    public ModelAndView deleteTrainee(@RequestParam("traineeid") int traineeId) {
+                 int id=sessionDetails.getId();
+	         if(id==-1){
+	          return new ModelAndView("/login");
+	         }
 	        getTraineeService().delete(traineeId);
 	        return new ModelAndView("deletedetails");
 	    }
